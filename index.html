@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App Hub - Makro Nakhonratchasima 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ตั้งค่าพื้นฐาน (Reset & Base Styles) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --yellow-accent: #facc15;
+            --dark-yellow: #eab308;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ส่วนหัว (Header & Navigation) */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--yellow-accent);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--yellow-accent);
+        }
+
+        /* ส่วนต้อนรับ (Hero Section) */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--yellow-accent);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ส่วนเนื้อหาหลักและคาร์ดเว็บแอป (Main Content & Grid) */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-content.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ตกแต่งส่วนหัวของคาร์ดที่มีไอคอนภาพ */
+        .card-image-area {
+            background-color: #f1f5f9;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s;
+        }
+
+        .card:hover .card-image-area {
+            background-color: #e2e8f0;
+        }
+
+        .card-image-area i {
+            font-size: 3.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* สีไอคอนเฉพาะสำหรับบางแผนกให้เด่นชัด */
+        .icon-gr { color: var(--primary-blue); }
+        .icon-ga { color: #0284c7; }
+
+        .card-badge {
+            background-color: var(--yellow-accent);
+            color: var(--primary-blue);
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            align-self: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-body {
+            padding: 1.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .card-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        /* สไตล์หน้าอื่นๆ */
+        .info-wrapper {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-wrapper h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .info-wrapper p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .contact-item h3 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; text-align: center; }
+            nav a { margin: 0 0.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">My<span>Apps</span>Hub</div>
+        <nav>
+            <a onclick="switchPage('home')" id="nav-home" class="active">หน้าแรก</a>
+            <a onclick="switchPage('about')" id="nav-about">เกี่ยวกับเรา</a>
+            <a onclick="switchPage('contact')" id="nav-contact">ติดต่อ</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 id="hero-title">ศูนย์รวมเว็บแอปพลิเคชัน</h1>
+        <p id="hero-desc">ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1</p>
+    </section>
+
+    <div class="container">
+        
+        <div id="page-home" class="page-content active-page">
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-truck-ramp-box icon-gr"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge">แผนก GR</span>
+                        <h2 class="card-title">ระบบบริหารคิวรับสินค้า</h2>
+                        <p class="card-text">ระบบสำหรับจัดลำดับและบริหารจัดการคิวรถขนส่งสินค้า ช่วยลดความหนาแน่นบริเวณคลังสินค้า เพิ่มความรวดเร็วและแม่นยำในการตรวจสอบและรับสินค้าเข้าสู่ระบบ</p>
+                        <a href="https://makro-st7.github.io/gr-queue/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-boxes-stacked icon-gr"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge">แผนก GR</span>
+                        <h2 class="card-title">ระบบบันทึกข้อมูลสินค้าคงคลัง</h2>
+                        <p class="card-text">เครื่องมือช่วยบริหารจัดการสต็อกสินค้าของทีมงาน รองรับการอัปเดตสถานะคลังสินค้าแบบเรียลไทม์ ตรวจสอบประวัติการรับเข้า และช่วยลดความผิดพลาดในการเช็กสต็อกสินค้าในคลัง</p>
+                        <a href="https://makro-st7.github.io/gr-stock/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-screwdriver-wrench icon-ga"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge">แผนก GA</span>
+                        <h2 class="card-title">ระบบแจ้งซ่อม/ซ่อมบำรุงภายใน</h2>
+                        <p class="card-text">ระบบแจ้งซ่อมและติดตามสถานะงานบำรุงรักษาอุปกรณ์ภายในสาขา ช่วยให้การส่งงานซ่อมเป็นระบบ รวดเร็ว และสามารถตรวจสอบขั้นตอนการดำเนินงานของช่างได้แบบเรียลไทม์</p>
+                        <a href="https://makro-st7.github.io/ga-repair/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="page-about" class="page-content">
+            <div class="info-wrapper">
+                <h2>เกี่ยวกับเรา</h2>
+                <p><strong>MyAppsHub (Makro Nakhonratchasima 1)</strong> คือแพลตฟอร์มกลางที่ถูกพัฒนาขึ้นเพื่อรวบรวมเว็บแอปพลิเคชันและเครื่องมือดิจิทัลที่ใช้งานภายในสาขาโคราช 1 ไว้ในจุดเดียว เพื่อสนับสนุนการทำงานของพนักงานในแผนกต่างๆ ให้มีประสิทธิภาพสูงสุด</p>
+                <p>เรามุ่งมั่นขับเคลื่อนการทำงานด้วยระบบเทคโนโลยีที่ทันสมัย เข้าถึงง่าย สะดวก รวดเร็ว และรองรับการทำงานในหลากหลายอุปกรณ์ (Responsive) เพื่อปรับเปลี่ยนกระบวนการทำงานให้เป็นดิจิทัลอย่างเต็มรูปแบบ มุ่งลดการใช้กระดาษ และลดขั้นตอนที่ซ้ำซ้อน</p>
+            </div>
+        </div>
+
+        <div id="page-contact" class="page-content">
+            <div class="info-wrapper">
+                <h2>ติดต่อเรา</h2>
+                <p>หากพบปัญหาในการใช้งานระบบ หรือต้องการสอบถามข้อมูลเพิ่มเติมเกี่ยวกับเว็บแอปพลิเคชันภายใน แม็คโคร สาขานครราชสีมา 1 สามารถติดต่อฝ่ายที่เกี่ยวข้องได้ดังนี้ครับ:</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3><i class="fa-solid fa-building-user"></i> แผนกตรวจรับสินค้า (GR)</h3>
+                        <p style="margin-top:0.5rem;">เบอร์ภายใน: 170,175</p>
+                        <p>ผู้รับผิดชอบ: ทีมงานตรวจรับสินค้า</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3><i class="fa-solid fa-gears"></i> แผนกบริหารทั่วไป (GA)</h3>
+                        <p style="margin-top:0.5rem;">เบอร์ภายใน: XXX</p>
+                        <p>ผู้รับผิดชอบ: ทีมงานซ่อมบำรุงและธุรการ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MyAppsHub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active-page');
+            });
+            document.querySelectorAll('nav a').forEach(nav => {
+                nav.classList.remove('active');
+            });
+
+            document.getElementById('page-' + pageId).classList.add('active-page');
+            document.getElementById('nav-' + pageId).classList.add('active');
+
+            const heroTitle = document.getElementById('hero-title');
+            const heroDesc = document.getElementById('hero-desc');
+
+            if (pageId === 'home') {
+                heroTitle.innerText = "ศูนย์รวมเว็บแอปพลิเคชัน";
+                heroDesc.innerText = "ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1";
+            } else if (pageId === 'about') {
+                heroTitle.innerText = "เกี่ยวกับแพลตฟอร์มของเรา";
+                heroDesc.innerText = "ความเป็นมาและวัตถุประสงค์ในการพัฒนาเครื่องมือดิจิทัลภายในสาขา";
+            } else if (pageId === 'contact') {
+                heroTitle.innerText = "ช่องทางการติดต่อ";
+                heroDesc.innerText = "สอบถามการใช้งาน แจ้งปัญหาระบบ หรือติดต่อแผนกต่างๆ ภายในสาขา";
+            }
+        }
+    </script>
+</body>
+</html>
