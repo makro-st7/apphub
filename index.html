@@ -169,6 +169,7 @@
         /* สีไอคอนเฉพาะสำหรับบางแผนกให้เด่นชัด */
         .icon-gr { color: var(--primary-blue); }
         .icon-ga { color: #0284c7; }
+        .icon-gm { color: #dc2626; } /* สีแดงสำหรับ GM */
 
         .card-badge {
             background-color: var(--yellow-accent);
@@ -179,6 +180,12 @@
             border-radius: 20px;
             align-self: flex-start;
             margin-bottom: 1rem;
+        }
+
+        /* สีพิเศษเฉพาะสำหรับ Badge ของ GM */
+        .badge-gm {
+            background-color: #fee2e2;
+            color: #dc2626;
         }
 
         .card-body {
@@ -294,8 +301,7 @@
 
     <section class="hero">
         <h1 id="hero-title">Application Hub</h1>
-        <p id="hero-desc">ยินดีต้อนรับเข้าสู่จุดบริการกลาง</p>                        
-        <p id="hero-desc">Makro Nakhonratchasima 1</p>
+        <p id="hero-desc">ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1</p> 
     </section>
 
     <div class="container">
@@ -303,6 +309,18 @@
         <div id="page-home" class="page-content active-page">
             <div class="grid">
                 
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-list-check icon-gm"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge badge-gm">GM/บริหาร</span>
+                        <h2 class="card-title">ระบบติดตามและบริหารงาน</h2>
+                        <p class="card-text">ระบบสำหรับมอบหมาย ติดตาม และบริหารจัดการภารกิจภายในสาขา ช่วยให้ผู้บริหารและหัวหน้างานสามารถควบคุมภาพรวมการดำเนินงานได้อย่างมีประสิทธิภาพ</p>
+                        <a href="https://makro-st7.github.io/gm-task/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-image-area">
                         <i class="fa-solid fa-truck-ramp-box icon-gr"></i>
@@ -417,7 +435,7 @@
 
             if (pageId === 'home') {
                 heroTitle.innerText = "Application Hub";
-                heroDesc.innerText = "ยินดีต้อนรับเข้าสู่จุดบริการกลาง";
+                heroDesc.innerText = "ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1";
             } else if (pageId === 'about') {
                 heroTitle.innerText = "เกี่ยวกับแพลตฟอร์ม";
                 heroDesc.innerText = "ความเป็นมาและวัตถุประสงค์ในการพัฒนาเครื่องมือดิจิทัลภายในสาขา";
