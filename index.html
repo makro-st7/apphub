@@ -169,7 +169,8 @@
         /* สีไอคอนเฉพาะสำหรับบางแผนกให้เด่นชัด */
         .icon-gr { color: var(--primary-blue); }
         .icon-ga { color: #0284c7; }
-        .icon-gm { color: #dc2626; } /* สีแดงสำหรับ GM */
+        .icon-gm { color: #dc2626; }
+        .icon-cold { color: #06b6d4; }
 
         .card-badge {
             background-color: var(--yellow-accent);
@@ -182,8 +183,8 @@
             margin-bottom: 1rem;
         }
 
-        /* สีพิเศษเฉพาะสำหรับ Badge ของ GM */
-        .badge-gm {
+        /* สีพิเศษสำหรับระบบที่ปิดบริการ */
+        .badge-disabled {
             background-color: #fee2e2;
             color: #dc2626;
         }
@@ -224,6 +225,14 @@
 
         .card-btn:hover {
             background-color: var(--secondary-blue);
+        }
+
+        /* สไตล์ปุ่มเด่นชัดขึ้นสำหรับระบบที่หยุดบริการแต่กดเข้าเว็บได้ */
+        .btn-disabled-active {
+            background-color: #ef4444;
+        }
+        .btn-disabled-active:hover {
+            background-color: #dc2626;
         }
 
         /* สไตล์หน้าอื่นๆ */
@@ -301,8 +310,7 @@
 
     <section class="hero">
         <h1 id="hero-title">Application Hub</h1>
-        <p id="hero-desc">ยินดีต้อนรับเข้าสู่จุดบริการกลาง</p> 
-        <p id="hero-desc">Makro Nakhonratchasima 1</p>
+        <p id="hero-desc">ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1</p> 
     </section>
 
     <div class="container">
@@ -315,34 +323,10 @@
                         <i class="fa-solid fa-list-check icon-gm"></i>
                     </div>
                     <div class="card-body">
-                        <span class="card-badge badge">GM/บริหาร</span>
+                        <span class="card-badge">GM/บริหาร</span>
                         <h2 class="card-title">ระบบติดตามและบริหารงาน</h2>
                         <p class="card-text">ระบบสำหรับมอบหมาย ติดตาม และบริหารจัดการภารกิจภายในสาขา ช่วยให้ผู้บริหารและหัวหน้างานสามารถควบคุมภาพรวมการดำเนินงานได้อย่างมีประสิทธิภาพ</p>
                         <a href="https://makro-st7.github.io/gm-task/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image-area">
-                        <i class="fa-solid fa-truck-ramp-box icon-gr"></i>
-                    </div>
-                    <div class="card-body">
-                        <span class="card-badge badge-gm">ยุติการให้บริการ</span>
-                        <h2 class="card-title">ระบบบริหารคิวรับสินค้า</h2>
-                        <p class="card-text">ระบบสำหรับจัดลำดับและบริหารจัดการคิวรถขนส่งสินค้า ช่วยลดความหนาแน่นบริเวณคลังสินค้า เพิ่มความรวดเร็วและแม่นยำในการตรวจสอบและรับสินค้าเข้าสู่ระบบ</p>
-                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image-area">
-                        <i class="fa-solid fa-user-gear icon-gr"></i>
-                    </div>
-                    <div class="card-body">
-                        <span class="card-badge badge-gm">ยุติการให้บริการ</span>
-                        <h2 class="card-title">ระบบจัดการคิวสำหรับผู้ดูแล</h2>
-                        <p class="card-text">แผงควบคุมหลักสำหรับผู้ดูแลระบบ (Admin) เพื่อจัดการการตั้งค่า ตรวจสอบรายงานภาพรวม และดูแลระบบหลังบ้านของแผนกตรวจรับสินค้าให้ทำงานได้อย่างราบรื่น</p>
-                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
@@ -360,13 +344,13 @@
 
                 <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-box-open icon-gr"></i>
+                        <i class="fa-solid fa-snowflake icon-cold"></i>
                     </div>
                     <div class="card-body">
-                        <span class="card-badge">BETA</span>
-                        <h2 class="card-title">ระบบลงทะเบียนสินค้าใหม่</h2>
-                        <p class="card-text">ระบบสำหรับบันทึกและจัดการข้อมูลสินค้าใหม่ที่เข้ามายังสาขา ช่วยให้ทีมงานสามารถตรวจสอบความถูกต้อง รับข้อมูลเข้าระบบได้อย่างเป็นขั้นตอนและรวดเร็ว</p>
-                        <a href="https://makro-st7.github.io/gr-newitem/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                        <span class="card-badge">แผนก FF</span>
+                        <h2 class="card-title">ระบบบันทึกตู้คอนเทนเนอร์</h2>
+                        <p class="card-text">ระบบสำหรับบันทึก ตรวจสอบ และบริหารจัดการข้อมูลสถานะตู้สินค้าคอนเทนเนอร์ควมคุมอุณหภูมิที่เข้า-ออกสาขา ช่วยให้การติดตามเป็นไปได้อย่างถูกต้องและเป็นระบบ</p>
+                        <a href="https://makro-st7.github.io/container-stock/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
@@ -379,6 +363,42 @@
                         <h2 class="card-title">ระบบแจ้งซ่อมบำรุงภายใน</h2>
                         <p class="card-text">ระบบแจ้งซ่อมและติดตามสถานะงานบำรุงรักษาอุปกรณ์ภายในสาขา ช่วยให้การส่งงานซ่อมเป็นระบบ รวดเร็ว และสามารถตรวจสอบขั้นตอนการดำเนินงานของช่างได้แบบเรียลไทม์</p>
                         <a href="https://makro-st7.github.io/ga-repair/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-truck-ramp-box icon-gr"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge badge-disabled">ยุติการให้บริการ</span>
+                        <h2 class="card-title">ระบบบริหารคิวรับสินค้า</h2>
+                        <p class="card-text">ระบบสำหรับจัดลำดับและบริหารจัดการคิวรถขนส่งสินค้า ช่วยลดความหนาแน่นบริเวณคลังสินค้า เพิ่มความรวดเร็วและแม่นยำในการตรวจสอบและรับสินค้าเข้าสู่ระบบ</p>
+                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" class="card-btn btn-disabled-active">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-user-gear icon-gr"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge badge-disabled">ยุติการให้บริการ</span>
+                        <h2 class="card-title">ระบบจัดการคิวสำหรับผู้ดูแล</h2>
+                        <p class="card-text">แผงควบคุมหลักสำหรับผู้ดูแลระบบ (Admin) เพื่อจัดการการตั้งค่า ตรวจสอบรายงานภาพรวม และดูแลระบบหลังบ้านของแผนกตรวจรับสินค้าให้ทำงานได้อย่างราบรื่น</p>
+                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" class="card-btn btn-disabled-active">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-box-open icon-gr"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge">BETA</span>
+                        <h2 class="card-title">ระบบลงทะเบียนสินค้าใหม่</h2>
+                        <p class="card-text">ระบบสำหรับบันทึกและจัดการข้อมูลสินค้าใหม่ที่เข้ามายังสาขา ช่วยให้ทีมงานสามารถตรวจสอบความถูกต้อง รับข้อมูลเข้าระบบได้อย่างเป็นขั้นตอนและรวดเร็ว</p>
+                        <a href="https://makro-st7.github.io/gr-newitem/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
