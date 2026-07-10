@@ -79,27 +79,82 @@
             color: var(--yellow-accent);
         }
 
-        /* ส่วนต้อนรับ (Hero Section) */
+        /* ==================== ปรับปรุงส่วนนี้: Hero Section & Animation ==================== */
         .hero {
+            position: relative; /* เพื่อให้อนุภาคขยับอยู่ข้างในได้ */
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: var(--text-light);
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
             border-bottom: 5px solid var(--yellow-accent);
+            overflow: hidden; /* ซ่อนกราฟฟิกที่หลุดขอบแบนเนอร์ */
+        }
+
+        /* จัดเนื้อหาให้อยู่เหนือตัวกราฟฟิก */
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 1rem;
             font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            opacity: 0.95;
             max-width: 600px;
             margin: 0 auto;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
+
+        /* สร้างกราฟฟิกทรงกลมขยับได้ */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background-color: rgba(250, 204, 21, 0.15); /* ใช้สีเหลืองแบบจางมาก ๆ */
+            border-radius: 50%;
+            animation: floatUp 12s infinite ease-in-out;
+        }
+
+        /* ปรับขนาดและตำแหน่งของแต่ละวงให้สลับกัน */
+        .bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; animation-duration: 10s; }
+        .bubble:nth-child(2) { width: 120px; height: 120px; left: 25%; animation-delay: 2s; animation-duration: 14s; background-color: rgba(255, 255, 255, 0.08); }
+        .bubble:nth-child(3) { width: 60px; height: 60px; left: 45%; animation-delay: 4s; animation-duration: 8s; }
+        .bubble:nth-child(4) { width: 150px; height: 150px; left: 70%; animation-delay: 1s; animation-duration: 16s; background-color: rgba(255, 255, 255, 0.05); }
+        .bubble:nth-child(5) { width: 90px; height: 90px; left: 85%; animation-delay: 5s; animation-duration: 11s; }
+
+        /* การทำสร้างคีย์เฟรมสำหรับให้ลอยและจางหาย */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-250px) scale(1.3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* ================================================================================= */
 
         /* ส่วนเนื้อหาหลักและคาร์ดเว็บแอป (Main Content & Grid) */
         .container {
@@ -146,7 +201,6 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* ตกแต่งส่วนหัวของคาร์ดที่มีไอคอนภาพ */
         .card-image-area {
             background-color: #f1f5f9;
             height: 140px;
@@ -166,7 +220,6 @@
             color: var(--primary-blue);
         }
 
-        /* สีไอคอนเฉพาะสำหรับบางแผนกให้เด่นชัด */
         .icon-gr { color: var(--primary-blue); }
         .icon-ga { color: #0284c7; }
         .icon-gm { color: #dc2626; }
@@ -183,7 +236,6 @@
             margin-bottom: 1rem;
         }
 
-        /* สีพิเศษสำหรับระบบที่ปิดบริการ */
         .badge-disabled {
             background-color: #fee2e2;
             color: #dc2626;
@@ -227,7 +279,6 @@
             background-color: var(--secondary-blue);
         }
 
-        /* สไตล์ปุ่มเด่นชัดขึ้นสำหรับระบบที่หยุดบริการแต่กดเข้าเว็บได้ */
         .btn-disabled-active {
             background-color: #ef4444;
         }
@@ -235,7 +286,6 @@
             background-color: #dc2626;
         }
 
-        /* สไตล์หน้าอื่นๆ */
         .info-wrapper {
             background: #ffffff;
             border-radius: 16px;
@@ -309,8 +359,17 @@
     </header>
 
     <section class="hero">
-        <h1 id="hero-title">Application Hub</h1>
-        <p id="hero-desc">ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1</p> 
+        <div class="animated-bg">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        <div class="hero-content">
+            <h1 id="hero-title">Application Hub</h1>
+            <p id="hero-desc">ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1</p> 
+        </div>
     </section>
 
     <div class="container">
