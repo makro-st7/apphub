@@ -27,7 +27,10 @@
             --secondary-blue: #3b82f6;
             --yellow-accent: #facc15;
             --dark-yellow: #eab308;
-            --bg-light: #f8fafc;
+            
+            /* [วิธีที่ 4] ปรับเฉดสีพื้นหลังหลักเป็นสีขาวอมฟ้าอ่อนๆ (Off-White Blue tint) เพื่อสร้าง Contrast */
+            --bg-light: #f0f4f9; 
+            
             --text-dark: #1e293b;
             --text-light: #ffffff;
         }
@@ -38,6 +41,12 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+
+            /* [วิธีที่ 1] สร้างลายตารางกริดโมเดิร์นจางๆ ด้วย CSS linear-gradient */
+            background-image: 
+                linear-gradient(rgba(30, 58, 138, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 58, 138, 0.025) 1px, transparent 1px);
+            background-size: 30px 30px; /* ขนาดของช่องตารางกริด */
         }
 
         /* ส่วนหัว (Header & Navigation) */
@@ -79,18 +88,18 @@
             color: var(--yellow-accent);
         }
 
-        /* ==================== ปรับปรุงส่วนนี้: Hero Section & Animation ==================== */
+        /* แบนเนอร์ (Hero Section & Animation) */
         .hero {
-            position: relative; /* เพื่อให้อนุภาคขยับอยู่ข้างในได้ */
+            position: relative;
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: var(--text-light);
             padding: 5rem 2rem;
             text-align: center;
             border-bottom: 5px solid var(--yellow-accent);
-            overflow: hidden; /* ซ่อนกราฟฟิกที่หลุดขอบแบนเนอร์ */
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
-        /* จัดเนื้อหาให้อยู่เหนือตัวกราฟฟิก */
         .hero-content {
             position: relative;
             z-index: 2;
@@ -111,7 +120,6 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
-        /* สร้างกราฟฟิกทรงกลมขยับได้ */
         .animated-bg {
             position: absolute;
             top: 0;
@@ -125,36 +133,23 @@
         .bubble {
             position: absolute;
             bottom: -50px;
-            background-color: rgba(250, 204, 21, 0.15); /* ใช้สีเหลืองแบบจางมาก ๆ */
+            background-color: rgba(250, 204, 21, 0.15);
             border-radius: 50%;
             animation: floatUp 12s infinite ease-in-out;
         }
 
-        /* ปรับขนาดและตำแหน่งของแต่ละวงให้สลับกัน */
         .bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; animation-duration: 10s; }
         .bubble:nth-child(2) { width: 120px; height: 120px; left: 25%; animation-delay: 2s; animation-duration: 14s; background-color: rgba(255, 255, 255, 0.08); }
         .bubble:nth-child(3) { width: 60px; height: 60px; left: 45%; animation-delay: 4s; animation-duration: 8s; }
         .bubble:nth-child(4) { width: 150px; height: 150px; left: 70%; animation-delay: 1s; animation-duration: 16s; background-color: rgba(255, 255, 255, 0.05); }
         .bubble:nth-child(5) { width: 90px; height: 90px; left: 85%; animation-delay: 5s; animation-duration: 11s; }
 
-        /* การทำสร้างคีย์เฟรมสำหรับให้ลอยและจางหาย */
         @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(1) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-250px) scale(1.3) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-250px) scale(1.3) rotate(360deg); opacity: 0; }
         }
-        /* ================================================================================= */
 
         /* ส่วนเนื้อหาหลักและคาร์ดเว็บแอป (Main Content & Grid) */
         .container {
@@ -185,34 +180,35 @@
             gap: 2rem;
         }
 
+        /* ตกแต่งคาร์ดสีขาวบริสุทธิ์เพื่อตัดกับพื้นหลัง */
         .card {
-            background: #ffffff;
+            background: #ffffff; /* ขาวบริสุทธิ์เพื่อดันให้ตัดกับพื้นหลังอมฟ้า */
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px -2px rgba(30, 58, 138, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.02); /* ปรับแต่งเงาให้นุ่มนวลขึ้น */
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(30, 58, 138, 0.05); /* เปลี่ยนขอบเป็นสีฟ้าจางมากเพื่อความกลมกลืน */
             display: flex;
             flex-direction: column;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         .card-image-area {
-            background-color: #f1f5f9;
+            background-color: #f8fafc;
             height: 140px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             transition: background-color 0.3s;
         }
 
         .card:hover .card-image-area {
-            background-color: #e2e8f0;
+            background-color: #f1f5f9;
         }
 
         .card-image-area i {
@@ -286,12 +282,13 @@
             background-color: #dc2626;
         }
 
+        /* ตกแต่งกล่องหน้าอื่นๆ สีขาวบริสุทธิ์ */
         .info-wrapper {
             background: #ffffff;
             border-radius: 16px;
             padding: 2.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px -2px rgba(30, 58, 138, 0.06);
+            border: 1px solid rgba(30, 58, 138, 0.05);
             max-width: 800px;
             margin: 0 auto;
         }
