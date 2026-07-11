@@ -27,10 +27,7 @@
             --secondary-blue: #3b82f6;
             --yellow-accent: #facc15;
             --dark-yellow: #eab308;
-            
-            /* [วิธีที่ 4] ปรับเฉดสีพื้นหลังหลักเป็นสีขาวอมฟ้าอ่อนๆ (Off-White Blue tint) เพื่อสร้าง Contrast */
             --bg-light: #f0f4f9; 
-            
             --text-dark: #1e293b;
             --text-light: #ffffff;
         }
@@ -41,12 +38,10 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-
-            /* [วิธีที่ 1] สร้างลายตารางกริดโมเดิร์นจางๆ ด้วย CSS linear-gradient */
             background-image: 
                 linear-gradient(rgba(30, 58, 138, 0.025) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(30, 58, 138, 0.025) 1px, transparent 1px);
-            background-size: 30px 30px; /* ขนาดของช่องตารางกริด */
+            background-size: 30px 30px;
         }
 
         /* ส่วนหัว (Header & Navigation) */
@@ -77,18 +72,19 @@
             color: var(--text-light);
             text-decoration: none;
             margin-left: 1.5rem;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             font-weight: 500;
             cursor: pointer;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
         }
 
         nav a:hover, nav a.active {
-            color: var(--yellow-accent);
+            color: var(--primary-blue);
+            background-color: var(--yellow-accent);
         }
 
-        /* แบนเนอร์ (Hero Section & Animation) */
+        /* แบนเนอร์ (Hero Section) */
         .hero {
             position: relative;
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -110,6 +106,7 @@
             margin-bottom: 1rem;
             font-weight: 600;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
 
         .hero p {
@@ -118,6 +115,7 @@
             max-width: 600px;
             margin: 0 auto;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
 
         .animated-bg {
@@ -151,7 +149,7 @@
             100% { transform: translateY(-250px) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
-        /* ส่วนเนื้อหาหลักและคาร์ดเว็บแอป (Main Content & Grid) */
+        /* ส่วนเนื้อหาหลัก */
         .container {
             max-width: 1200px;
             margin: 3rem auto;
@@ -162,7 +160,7 @@
 
         .page-content {
             display: none;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         .page-content.active-page {
@@ -170,7 +168,7 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -180,14 +178,13 @@
             gap: 2rem;
         }
 
-        /* ตกแต่งคาร์ดสีขาวบริสุทธิ์เพื่อตัดกับพื้นหลัง */
         .card {
-            background: #ffffff; /* ขาวบริสุทธิ์เพื่อดันให้ตัดกับพื้นหลังอมฟ้า */
+            background: #ffffff;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 20px -2px rgba(30, 58, 138, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.02); /* ปรับแต่งเงาให้นุ่มนวลขึ้น */
+            box-shadow: 0 4px 20px -2px rgba(30, 58, 138, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(30, 58, 138, 0.05); /* เปลี่ยนขอบเป็นสีฟ้าจางมากเพื่อความกลมกลืน */
+            border: 1px solid rgba(30, 58, 138, 0.05);
             display: flex;
             flex-direction: column;
         }
@@ -213,13 +210,10 @@
 
         .card-image-area i {
             font-size: 3.5rem;
-            color: var(--primary-blue);
         }
 
-        .icon-gr { color: var(--primary-blue); }
-        .icon-ga { color: #0284c7; }
-        .icon-gm { color: #dc2626; }
-        .icon-cold { color: #06b6d4; }
+        /* ตั้งค่าสีไอคอนให้เป็นสีน้ำเงินทั้งหมด */
+        .icon-blue { color: var(--primary-blue); }
 
         .card-badge {
             background-color: var(--yellow-accent);
@@ -275,14 +269,14 @@
             background-color: var(--secondary-blue);
         }
 
+        /* คลาสสไตล์ของเว็บที่ยุติการให้บริการ */
         .btn-disabled-active {
-            background-color: #ef4444;
+            background-color: #ef4444; /* เปลี่ยนกลับเป็นสีแดงตามต้นฉบับเพื่อให้พนักงานทราบสถานะชัดเจน */
         }
         .btn-disabled-active:hover {
             background-color: #dc2626;
         }
 
-        /* ตกแต่งกล่องหน้าอื่นๆ สีขาวบริสุทธิ์ */
         .info-wrapper {
             background: #ffffff;
             border-radius: 16px;
@@ -338,7 +332,7 @@
 
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 1rem; text-align: center; }
-            nav a { margin: 0 0.5rem; }
+            nav a { margin: 0 0.25rem; }
             .hero h1 { font-size: 2rem; }
             .grid { grid-template-columns: 1fr; }
         }
@@ -349,9 +343,9 @@
     <header>
         <div class="logo">My<span>Apps</span>Hub</div>
         <nav>
-            <a onclick="switchPage('home')" id="nav-home" class="active">หน้าแรก</a>
-            <a onclick="switchPage('about')" id="nav-about">เกี่ยวกับเรา</a>
-            <a onclick="switchPage('contact')" id="nav-contact">ติดต่อ</a>
+            <a href="javascript:void(0);" onclick="switchPage('home')" id="nav-home" class="active">หน้าแรก</a>
+            <a href="javascript:void(0);" onclick="switchPage('about')" id="nav-about">เกี่ยวกับเรา</a>
+            <a href="javascript:void(0);" onclick="switchPage('contact')" id="nav-contact">ติดต่อ</a>
         </nav>
     </header>
 
@@ -371,96 +365,112 @@
 
     <div class="container">
         
+        <!-- หน้าแรก -->
         <div id="page-home" class="page-content active-page">
             <div class="grid">
                 
                 <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-list-check icon-gm"></i>
+                        <i class="fa-solid fa-list-check icon-blue"></i>
                     </div>
                     <div class="card-body">
                         <span class="card-badge">GM/บริหาร</span>
                         <h2 class="card-title">ระบบติดตามและบริหารงาน</h2>
                         <p class="card-text">ระบบสำหรับมอบหมาย ติดตาม และบริหารจัดการภารกิจภายในสาขา ช่วยให้ผู้บริหารและหัวหน้างานสามารถควบคุมภาพรวมการดำเนินงานได้อย่างมีประสิทธิภาพ</p>
-                        <a href="https://makro-st7.github.io/gm-task/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                        <a href="https://makro-st7.github.io/gm-task/" target="_blank" rel="noopener" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-boxes-stacked icon-gr"></i>
+                        <i class="fa-solid fa-boxes-stacked icon-blue"></i>
                     </div>
                     <div class="card-body">
                         <span class="card-badge">แผนก GR</span>
                         <h2 class="card-title">ระบบบันทึกสินค้าคงคลัง</h2>
                         <p class="card-text">เครื่องมือช่วยบริหารจัดการสต็อกสินค้าของทีมงาน รองรับการอัปเดตสถานะคลังสินค้าแบบเรียลไทม์ ตรวจสอบประวัติการรับเข้า และช่วยลดความผิดพลาดในการเช็กสต็อกสินค้าในคลัง</p>
-                        <a href="https://makro-st7.github.io/gr-stock/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                        <a href="https://makro-st7.github.io/gr-stock/" target="_blank" rel="noopener" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-snowflake icon-cold"></i>
+                        <i class="fa-solid fa-snowflake icon-blue"></i>
                     </div>
                     <div class="card-body">
                         <span class="card-badge">แผนก FF</span>
                         <h2 class="card-title">ระบบบันทึกตู้คอนเทนเนอร์</h2>
                         <p class="card-text">ระบบสำหรับบันทึก ตรวจสอบ และบริหารจัดการข้อมูลสถานะตู้สินค้าคอนเทนเนอร์ควมคุมอุณหภูมิที่เข้า-ออกสาขา ช่วยให้การติดตามเป็นไปได้อย่างถูกต้องและเป็นระบบ</p>
-                        <a href="https://makro-st7.github.io/container-stock/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                        <a href="https://makro-st7.github.io/container-stock/" target="_blank" rel="noopener" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-screwdriver-wrench icon-ga"></i>
+                        <i class="fa-solid fa-seedling icon-blue"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-badge">แผนก FF</span>
+                        <h2 class="card-title">ระบบบันทึกสินค้าผิดปกติ</h2>
+                        <p class="card-text">ระบบสำหรับบันทึกและคัดแยกข้อมูลสถิติเกี่ยวกับสินค้าที่มีความผิดปกติภายในแผนก FF เพื่อลดความซ้ำซ้อน รวบรวมข้อมูลอย่างเป็นระบบ และใช้สรุปรายงานผลดำเนินงานได้อย่างถูกต้อง</p>
+                        <a href="https://makro-st7.github.io/ff-defect/" target="_blank" rel="noopener" class="card-btn">เปิดใช้งานแอป</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image-area">
+                        <i class="fa-solid fa-screwdriver-wrench icon-blue"></i>
                     </div>
                     <div class="card-body">
                         <span class="card-badge">แผนก GA</span>
                         <h2 class="card-title">ระบบแจ้งซ่อมบำรุงภายใน</h2>
                         <p class="card-text">ระบบแจ้งซ่อมและติดตามสถานะงานบำรุงรักษาอุปกรณ์ภายในสาขา ช่วยให้การส่งงานซ่อมเป็นระบบ รวดเร็ว และสามารถตรวจสอบขั้นตอนการดำเนินงานของช่างได้แบบเรียลไทม์</p>
-                        <a href="https://makro-st7.github.io/ga-repair/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                        <a href="https://makro-st7.github.io/ga-repair/" target="_blank" rel="noopener" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
                  <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-box-open icon-gr"></i>
+                        <i class="fa-solid fa-box-open icon-blue"></i>
                     </div>
                     <div class="card-body">
                         <span class="card-badge">BETA</span>
                         <h2 class="card-title">ระบบลงทะเบียนสินค้าใหม่</h2>
                         <p class="card-text">ระบบสำหรับบันทึกและจัดการข้อมูลสินค้าใหม่ที่เข้ามายังสาขา ช่วยให้ทีมงานสามารถตรวจสอบความถูกต้อง รับข้อมูลเข้าระบบได้อย่างเป็นขั้นตอนและรวดเร็ว</p>
-                        <a href="https://makro-st7.github.io/gr-newitem/" target="_blank" class="card-btn">เปิดใช้งานแอป</a>
+                        <a href="https://makro-st7.github.io/gr-newitem/" target="_blank" rel="noopener" class="card-btn">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
+                <!-- ยุติการให้บริการ แต่เปิดให้คลิกเข้าเว็บได้ -->
                 <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-truck-ramp-box icon-gr"></i>
+                        <i class="fa-solid fa-truck-ramp-box icon-blue"></i>
                     </div>
                     <div class="card-body">
                         <span class="card-badge badge-disabled">ยุติการให้บริการ</span>
                         <h2 class="card-title">ระบบบริหารคิวรับสินค้า</h2>
                         <p class="card-text">ระบบสำหรับจัดลำดับและบริหารจัดการคิวรถขนส่งสินค้า ช่วยลดความหนาแน่นบริเวณคลังสินค้า เพิ่มความรวดเร็วและแม่นยำในการตรวจสอบและรับสินค้าเข้าสู่ระบบ</p>
-                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" class="card-btn btn-disabled-active">เปิดใช้งานแอป</a>
+                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" rel="noopener" class="card-btn btn-disabled-active">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
+                <!-- ยุติการให้บริการ แต่เปิดให้คลิกเข้าเว็บได้ -->
                 <div class="card">
                     <div class="card-image-area">
-                        <i class="fa-solid fa-user-gear icon-gr"></i>
+                        <i class="fa-solid fa-user-gear icon-blue"></i>
                     </div>
                     <div class="card-body">
                         <span class="card-badge badge-disabled">ยุติการให้บริการ</span>
                         <h2 class="card-title">ระบบจัดการคิวสำหรับผู้ดูแล</h2>
                         <p class="card-text">แผงควบคุมหลักสำหรับผู้ดูแลระบบ (Admin) เพื่อจัดการการตั้งค่า ตรวจสอบรายงานภาพรวม และดูแลระบบหลังบ้านของแผนกตรวจรับสินค้าให้ทำงานได้อย่างราบรื่น</p>
-                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" class="card-btn btn-disabled-active">เปิดใช้งานแอป</a>
+                        <a href="https://makro-st7.github.io/gr-admin/" target="_blank" rel="noopener" class="card-btn btn-disabled-active">เปิดใช้งานแอป</a>
                     </div>
                 </div>
 
             </div>
         </div>
 
+        <!-- เกี่ยวกับเรา -->
         <div id="page-about" class="page-content">
             <div class="info-wrapper">
                 <h2>เกี่ยวกับเรา</h2>
@@ -469,6 +479,7 @@
             </div>
         </div>
 
+        <!-- ติดต่อเรา -->
         <div id="page-contact" class="page-content">
             <div class="info-wrapper">
                 <h2>ติดต่อเรา</h2>
@@ -477,7 +488,7 @@
                 <div class="contact-grid">
                     <div class="contact-item">
                         <h3><i class="fa-solid fa-building-user"></i> แผนกตรวจรับสินค้า (GR)</h3>
-                        <p style="margin-top:0.5rem;">เบอร์ภายใน: 170,175</p>
+                        <p style="margin-top:0.5rem;">เบอร์ภายใน: 170, 175</p>
                         <p>ผู้รับผิดชอบ: ทีมงานตรวจรับสินค้า</p>
                     </div>
                     <div class="contact-item">
@@ -510,16 +521,23 @@
             const heroTitle = document.getElementById('hero-title');
             const heroDesc = document.getElementById('hero-desc');
 
-            if (pageId === 'home') {
-                heroTitle.innerText = "Application Hub";
-                heroDesc.innerText = "ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1";
-            } else if (pageId === 'about') {
-                heroTitle.innerText = "เกี่ยวกับแพลตฟอร์ม";
-                heroDesc.innerText = "ความเป็นมาและวัตถุประสงค์ในการพัฒนาเครื่องมือดิจิทัลภายในสาขา";
-            } else if (pageId === 'contact') {
-                heroTitle.innerText = "ช่องทางการติดต่อ";
-                heroDesc.innerText = "สอบถามการใช้งาน แจ้งปัญหาระบบ หรือติดต่อแผนกต่างๆ ภายในสาขา";
-            }
+            heroTitle.style.opacity = 0;
+            heroDesc.style.opacity = 0;
+
+            setTimeout(() => {
+                if (pageId === 'home') {
+                    heroTitle.innerText = "Application Hub";
+                    heroDesc.innerText = "ยินดีต้อนรับเข้าสู่จุดบริการกลาง Makro Nakhonratchasima 1";
+                } else if (pageId === 'about') {
+                    heroTitle.innerText = "เกี่ยวกับแพลตฟอร์ม";
+                    heroDesc.innerText = "ความเป็นมาและวัตถุประสงค์ในการพัฒนาเครื่องมือดิจิทัลภายในสาขา";
+                } else if (pageId === 'contact') {
+                    heroTitle.innerText = "ช่องทางการติดต่อ";
+                    heroDesc.innerText = "สอบถามการใช้งาน แจ้งปัญหาระบบ หรือติดต่อแผนกต่างๆ ภายในสาขา";
+                }
+                heroTitle.style.opacity = 1;
+                heroDesc.style.opacity = 1;
+            }, 150);
         }
     </script>
 </body>
